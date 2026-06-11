@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographie Culinaire & Community Management - Val d'Oise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4A574;
+            --black: #1A1A1A;
+            --cream: #F5F3F0;
+            --green: #2B4D3B;
+            --taupe: #8B8680;
+            --light-taupe: #E8D4C4;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--cream);
+        }
+
+        header {
+            background: var(--cream);
+            padding: 2rem 2%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem 2%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: var(--black);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--taupe);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--cream);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--gold);
+            color: var(--cream);
+        }
+
+        .services {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 3rem 2%;
+        }
+
+        .services h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--black);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.15);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .service-card p {
+            color: var(--taupe);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--black);
+            font-size: 0.95rem;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .pricing {
+            background: var(--green);
+            color: var(--cream);
+            padding: 4rem 2%;
+            margin: 5rem 0;
+        }
+
+        .pricing-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-taupe);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 1rem 0;
+        }
+
+        .price-details {
+            color: var(--cream);
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+            opacity: 0.9;
+        }
+
+        .portfolio {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 3rem 2%;
+        }
+
+        .portfolio h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--light-taupe);
+            aspect-ratio: 1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--black);
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .testimonials {
+            background: var(--cream);
+            padding: 4rem 2%;
+            margin: 5rem 0;
+            border-top: 1px solid rgba(212, 165, 116, 0.3);
+            border-bottom: 1px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .testimonials-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--taupe);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--black);
+            font-style: normal;
+        }
+
+        .about {
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 3rem 2%;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: var(--taupe);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact {
+            background: var(--black);
+            color: var(--cream);
+            padding: 4rem 2%;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            line-height: 1.8;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            text-align: center;
+        }
+
+        .contact-method a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-method a:hover {
+            color: var(--cream);
+        }
+
+        footer {
+            background: var(--black);
+            color: var(--taupe);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .services h2, .pricing h2, .portfolio h2, .testimonials h2, .about h2, .contact h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">LUMIÈRE & CO</a>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Tarifs</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>La photographie qui vend</h1>
+        <p class="subtitle">Photographie culinaire + stratégie community management pour transformer votre présence Instagram en client magnet</p>
+        <a href="#contact" class="cta-button">Réserver un audit gratuit</a>
+        <a href="#services" class="cta-button secondary">Découvrir mes services</a>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Mes services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>📸 Photographie Culinaire</h3>
+                <p>Vos produits méritent mieux qu'une simple photo. Je crée des visuels qui racontent une histoire et qui vendent.</p>
+                <ul class="service-features">
+                    <li>Shooting professionnel</li>
+                    <li>Styling culinaire</li>
+                    <li>Retouche premium</li>
+                    <li>Livraison rapide</li>
+                </ul>
+                <p style="color: var(--gold); font-weight: 600;">À partir de 400€</p>
+            </div>
+
+            <div class="service-card">
+                <h3>💬 Community Management</h3>
+                <p>Une présence Instagram cohérente qui engage et convertit. Je gère votre présence de A à Z.</p>
+                <ul class="service-features">
+                    <li>Création de contenu</li>
+                    <li>Gestion des posts</li>
+                    <li>Community engagement</li>
+                    <li>Stratégie mensuelle</li>
+                </ul>
+                <p style="color: var(--gold); font-weight: 600;">À partir de 400€/mois</p>
+            </div>
+
+            <div class="service-card">
+                <h3>🎯 Packages Combinés</h3>
+                <p>La vraie magie : photo impeccable + stratégie cohérente = résultats exponentiels.</p>
+                <ul class="service-features">
+                    <li>Photos mensuelles</li>
+                    <li>Management complet</li>
+                    <li>Tarif préférentiel</li>
+                    <li>Support prioritaire</li>
+                </ul>
+                <p style="color: var(--gold); font-weight: 600;">À partir de 1800€/mois</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="pricing-content">
+            <h2>Tarification transparente</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Shoot Basique</h3>
+                    <div class="price">400€</div>
+                    <div class="price-details">4-6h de shooting<br>15-20 photos finales<br>Retouche standard</div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Shoot Premium</h3>
+                    <div class="price">600€</div>
+                    <div class="price-details">8h de shooting<br>Styling marque<br>Retouche premium<br>+ 30 photos</div>
+                </div>
+
+                <div class="price-card">
+                    <h3>CM Mensuel</h3>
+                    <div class="price">400€</div>
+                    <div class="price-details">3 posts/semaine<br>Stories quotidiennes<br>Engagement</div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Package Annuel</h3>
+                    <div class="price">18k€</div>
+                    <div class="price-details">2 shoots/mois<br>CM complet<br>Tarif préférentiel -20%<br>Support prioritaire</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">Plats & Mets Gastronomiques</div>
+            <div class="portfolio-item">Boissons & Cocktails</div>
+            <div class="portfolio-item">Pâtisserie & Desserts</div>
+            <div class="portfolio-item">Food & Lifestyle</div>
+            <div class="portfolio-item">Branding Culinaire</div>
+            <div class="portfolio-item">Content Shooting</div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="testimonials-content">
+            <h2>Ce que disent mes clients</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Un vrai changement en 3 mois. Les photos et la stratégie ont vraiment fait décoller notre Instagram."</p>
+                    <p class="testimonial-author">— Aurélie, Restaurateur</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Professionnelle, créative et à l'écoute. Exactement ce qu'il nous fallait pour notre marque de cosmétiques."</p>
+                    <p class="testimonial-author">— Claire, Fondatrice</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Plus qu'une photographe, une partenaire stratégique. Résultats concrets et ROI visible."</p>
+                    <p class="testimonial-author">— Thomas, E-commerce Food</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>À propos</h2>
+        <p>Je suis photographe culinaire et community manager freelance basée en Val d'Oise. J'aide les marques food à transformer leur présence Instagram en outil de vente réel.</p>
+        <p>Avec une approche qui combine photographie impeccable + stratégie de contenu cohérente, j'ai aidé 15+ marques à augmenter leur engagement et leurs conversions.</p>
+        <p style="color: var(--gold); font-weight: 600;">Prêt à transformer votre visuel ? 👇</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2>Parlons de votre projet</h2>
+            <p>Un audit gratuit pour découvrir comment je peux vous aider</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <p>📧 Email</p>
+                    <a href="mailto:hello@votreemail.com">hello@votreemail.com</a>
+                </div>
+                <div class="contact-method">
+                    <p>📱 Téléphone</p>
+                    <a href="tel:+33612345678">+33 6 12 34 56 78</a>
+                </div>
+                <div class="contact-method">
+                    <p>📍 Localisation</p>
+                    <a href="#">Val d'Oise, France</a>
+                </div>
+            </div>
+
+            <a href="https://calendly.com/votrecalendly" class="cta-button">Réserver un appel gratuit</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Photographie Culinaire & Community Management. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
